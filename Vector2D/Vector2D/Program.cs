@@ -1,11 +1,9 @@
-﻿package dotnet.exercise1;
-
-import java.util.ArrayList;
-
-/*
+﻿/*
  * Represents (x, y) vector.
  *
  */
+using System.Collections.Generic;
+
 public class Vector2D
 {
     /*
@@ -19,50 +17,33 @@ public class Vector2D
     private int y;
 
     /*
-     * Default constructor
-     */
-    public Vector2D()
-    {
-        this(0, 0);
-    }
-
-    /*
      * Constructor.
      * 
      */
-    public Vector2D(int x, int y)
+    public Vector2D(int x = 0, int y = 0)
     {
-        setX(x);
-        setY(y);
+        this.X = x;
+        this.Y = y;
     }
 
-    public int getX()
+    public int X
     {
-        return x;
+        get;
+        set;
     }
 
-    public int getY()
+    public int Y
     {
-        return y;
+        get;
+        set;
     }
-
-    public void setX(int x)
-    {
-        this.x = x;
-    }
-
-    public void setY(int y)
-    {
-        this.y = y;
-    }
-
     /*
      * Adds two vectors together.
      */
-    public Vector2D add(Vector2D v)
+    public static Vector2D operator +(Vector2D v,Vector2D u)
     {
-        int x = this.x + v.x;
-        int y = this.y + v.y;
+        var x = u.x + v.x;
+        var y = u.y + v.y;
 
         return new Vector2D(x, y);
     }
@@ -70,26 +51,26 @@ public class Vector2D
     /*
      * Multiplies vector with a constant.
      */
-    public Vector2D mul(int factor)
+    public static Vector2D operator *(int factor,Vector2D v)
     {
-        int x = this.x * factor;
-        int y = this.y * factor;
+        var x = v.x * factor;
+        var y = v.y * factor;
 
         return new Vector2D(x, y);
     }
 
-    @Override
-    public String toString()
+    override
+    public string ToString()
     {
-        return String.format("(%d, %d)", x, y);
+        return string.Format("(%d, %d)", x, y);
     }
 
-    @Override
-    public boolean equals(Object object)
+    override
+    public bool Equals(object o)
     {
-        if (object instanceof Vector2D )
+        if (o is Vector2D)
         {
-            return equals((Vector2D)object);
+            return Equals(o);
         }
         else
         {
@@ -97,14 +78,14 @@ public class Vector2D
         }
     }
 
-    public boolean equals(Vector2D v)
+    public bool Equals(Vector2D v)
     {
         return v != null && this.x == v.x && this.y == v.y;
     }
 
-    @Override
-    public int hashCode()
-    {
+    override
+    public int GetHashCode()
+    { 
         return x ^ y;
     }
 
@@ -115,17 +96,18 @@ public class Vector2D
      * i.e. (0, 1), (1, 1), (1, 0), etc. respectively.
      *
      */
-    public static Iterable<Vector2D> directions()
+    public static IEnumerable<Vector2D> Directions()
     {
-        ArrayList<Vector2D> result = new ArrayList<>();
+        List<Vector2D> result = new List<Vector2D>();
 
-        for (int dx = -1; dx <= 1; ++dx)
+        for (var dx = -1; dx <= 1; ++dx)
         {
-            for (int dy = -1; dy <= 1; ++dy)
+            for (var dy = -1; dy <= 1; ++dy)
             {
                 if (dx != 0 || dy != 0)
                 {
-                    result.add(new Vector2D(dx, dy));
+                    
+                    result.Add(new Vector2D(dx, dy));
                 }
             }
         }
@@ -138,13 +120,13 @@ public class Vector2D
      * one step away in all directions.
      * E.g. (x, y) has neighbors (x + 1, y), (x + 1, y + 1), (x, y + 1), etc. 
      */
-    public Iterable<Vector2D> around()
+    public IEnumerable<Vector2D> Around()
     {
-        ArrayList<Vector2D> result = new ArrayList<>();
+       var result = new List<Vector2D>();
 
-        for (Vector2D direction : directions())
+        foreach (var direction in Directions())
         {
-            result.add(this.add(direction));
+            result.Add(this + direction);
         }
 
         return result;
