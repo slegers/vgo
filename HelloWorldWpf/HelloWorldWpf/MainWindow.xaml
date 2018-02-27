@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HelloWorldWpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="MainWindow" Height="350" Width="525" FontSize="40" FontWeight="Bold" Foreground="Blue" >
+    <Grid Margin="0,0,0,0.5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush>
+                <GradientStop Color="pink" Offset="0"></GradientStop>
+                <GradientStop Color="Red" Offset="0.5"></GradientStop>
+                <GradientStop Color="Cyan" Offset="1"></GradientStop>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <TextBlock Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="111,84,0,0" TextWrapping="Wrap" Text="Hello World!" VerticalAlignment="Top" Height="83" Width="304"/>
     </Grid>
 </Window>
