@@ -18,8 +18,8 @@
         </Grid.ColumnDefinitions>
         <Label Content="Firstname" Grid.Row="0" Grid.Column="0" Margin="0.1cm" />
         <Label Content="Lastname" Grid.Row="1" Grid.Column="0" Margin="0.1cm" />
-        <TextBox Grid.Row="0" Grid.Column="1" Margin="0.1cm" />
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="0.1cm" />
-        <Button Grid.Row="2" Grid.Column="1" Content="Save" Margin="0.1cm" />
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="0.1cm" Text="{Binding Path=Firstname, Mode=OneWay}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="7,4,1,4" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=Firstname, Mode=OneWayToSource}"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="Save" Margin="0.1cm" Click="Button_Click"/>
     </Grid>
 </Window>

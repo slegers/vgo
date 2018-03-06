@@ -28,5 +28,11 @@ namespace Binding_Grid
             P = new Person("Yanice", "Slegers");
             DataContext = P;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            P = (Person) DataContext;
+            P.Firstname = "Thomas";
+        }
     }
 }
