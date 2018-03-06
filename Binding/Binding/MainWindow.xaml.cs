@@ -24,5 +24,10 @@ namespace Binding
         {
             InitializeComponent();
         }
+
+        private void InputTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
