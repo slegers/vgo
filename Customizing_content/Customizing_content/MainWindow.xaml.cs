@@ -24,5 +24,20 @@ namespace Customizing_content
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            String message = "Hello Wordl!";
+            MessageBoxResult result = MessageBox.Show(message);
+
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            String message = "Hello Wordl! Inner button";
+            MessageBoxResult result = MessageBox.Show(message);
+            e.Handled = true;
+        }
     }
 }

@@ -15,7 +15,11 @@
             Grid.ColumnSpan="2" Margin="0.5cm">
             Select who you think should be employee of the month:
         </TextBlock>
-        <Button Grid.Row="1" Grid.Column="0" Margin="0.5cm" Content="Lenny Leonard"/>
+        <Button Grid.Row="1" Grid.Column="0" Margin="0.5cm" Click="Button_Click">
+            <Button Grid.Row="1" Grid.Column="0" Click="Button_Click_1">
+                Test
+            </Button>
+        </Button>
         <Button Grid.Row="1" Grid.Column="1" Margin="0.5cm">
             <StackPanel Orientation="Horizontal">
                 <StackPanel Orientation="Vertical">
