@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{507DBE4E-6345-45F9-B688-0B672A208A97}</ProjectGuid>
+    <ProjectGuid>{E80D1BED-05A6-4A5B-A45D-8DB58573B9AC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Resources</RootNamespace>
-    <AssemblyName>Resources</AssemblyName>
+    <RootNamespace>Customizing_content</RootNamespace>
+    <AssemblyName>Customizing_content</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -92,9 +92,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="exclamation.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
