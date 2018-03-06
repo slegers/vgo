@@ -6,6 +6,17 @@
         xmlns:local="clr-namespace:LayoutCombo"
         mc:Ignorable="d"
         Title="Combined" Height="232.516" Width="413">
+    
+    <Window.Resources>
+        <LinearGradientBrush x:Key="backgroundBrush">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Color="White" Offset="0"></GradientStop>
+                <GradientStop Color="GreenYellow" Offset="0.8"></GradientStop>
+                <GradientStop Color="Red" Offset="1"></GradientStop>
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -13,19 +24,17 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <TextBlock FontSize="100" Margin="0 0">
-            ⚠
-        </TextBlock>
+        <Image Source="exclamation.png" Width="1.5cm"></Image>
         <TextBlock Grid.Column="1" TextWrapping="Wrap" Padding="30">
             This is an example from a layout panel in a grid in
             order to greate and messagebox-like Window. Do you like wpf already?
         </TextBlock>
         <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Grid.ColumnSpan="2">
-            <Button Margin="10" Padding="10" Width="3cm" Content="Yes"/>
-            <Button Margin="10" Padding="10" Width="3cm" HorizontalContentAlignment="Center" Content="Yes"/>
+            <Button Margin="10" Padding="10" Width="3cm" Content="Yes" Background="{StaticResource backgroundBrush}"/>
+            <Button Margin="10" Padding="10" Width="3cm" HorizontalContentAlignment="Center" Content="Yes" Background="{StaticResource backgroundBrush}"/>
         </StackPanel>
 
     </Grid>
