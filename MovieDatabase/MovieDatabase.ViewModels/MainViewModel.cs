@@ -1,33 +1,32 @@
-﻿using MovieDatabase.Interfaces;
+﻿using Microsoft.Practices.ServiceLocation;
+using MovieDatabase.Interfaces;
 using MovieDatabase.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace MovieDatabase.ViewModels 
+namespace MovieDatabase.ViewModels
 {
     class MainViewModel : INotifyPropertyChanged
-
     {
+        private List<MovieViewModel> MovieList = new List<MovieViewModel>();
         public MainViewModel()
         {
             this.Add = new AddCommand();
             MovieRepository repo = new MovieRepository();
-            this.Movies = 
-            this.SelectedMovie = repo.FindById("tt0107290");
+            
+            foreach (Movie movie in repo.Entries)
+            {
+
+                MovieList.Add(new MovieViewModel(movie));
+            }
+            SelectedMovie = MovieList[0];
+           
         }
 
         public ICommand Add{
-            set
-            {
-                AddCommand add = new AddCommand();
-                add.Execute(null);
-            }
+            get;set;
         }
 
         public MovieViewModel SelectedMovie {
@@ -35,13 +34,20 @@ namespace MovieDatabase.ViewModels
             {
                 if(PropertyChanged != null)
                 {
-                    PropertyChanged(this, new PropertyChangedEventArgs("SelectedMovie"));
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(SelectedMovie)));
                 }
             }
                 
         }
 
-        public IEnumerable<MovieViewModel> Movies { get; set; }
+        public IEnumerable<MovieViewModel> Movies {
+            get
+            {
+                return MovieList;
+            }
+            
+        }
+  
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -56,8 +62,8 @@ namespace MovieDatabase.ViewModels
 
         public void Execute(object parameter)
         {
-            IWindowService service = new Window();
-            service.ShowDialog(new AddViewModel());
+            IWindowService service = ServiceLocator.Current.GetInstance<IWindowService>();
+            var window = service.ShowWindow(new AddViewModel());
         }
     }
 }
